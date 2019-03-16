@@ -2,19 +2,19 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build -t nghia/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t nghia4007/react-test -f ./client/Dockerfile.dev ./client
 script:
-  - docker run nghia/react-test npm test -- --coverage
+  - docker run nghia4007/react-test npm test -- --coverage
 after_success:
-  - docker build -t nghia/multi-client ./client
-  - docker build -t nghia/multi-nginx ./nginx
-  - docker build -t nghia/multi-server ./server
-  - docker build -t nghia/multi-worker ./worker
+  - docker build -t nghia4007/multi-client ./client
+  - docker build -t nghia4007/multi-nginx ./nginx
+  - docker build -t nghia4007/multi-server ./server
+  - docker build -t nghia4007/multi-worker ./worker
   # login to cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #Take those image and push to docker hub
-  - docker push nghia/multi-client
-  - docker push nghia/multi-nginx
-  - docker push nghia/multi-server
-  - docker push nghia/multi-worker
+  - docker push nghia4007/multi-client
+  - docker push nghia4007/multi-nginx
+  - docker push nghia4007/multi-server
+  - docker push nghia4007/multi-worker
   
